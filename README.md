@@ -85,7 +85,12 @@ En esta sección se definen y explican las consultas a la base de datos
 
 ~~~
 /*
-    La sentencia SQL INSERT INTO es usada para realizar los registros o inserciones de nuevas filas de datos a las tablas de nuestro DB e igual al UPDATE se usa SET para espesificar que se van a insertar los siguientes datos; pero en este caso despues del SET tenemos un signo de interrogación ? esto no dice que se debe preparar una variable o constante con los datos a insertar. 
+    La sentencia SQL INSERT INTO es usada para realizar los registros o inserciones
+     de nuevas filas de datos a las tablas de nuestro DB e igual al UPDATE se usa SET
+      para espesificar que se van a insertar los siguientes datos; pero en este caso
+       despues del SET tenemos un signo de interrogación ? esto no dice que se debe 
+       preparar una variable o constante con los datos a insertar. 
+       
 */
     const sqlInsertar = "INSERT INTO productos SET ?"
     const sqlConsulta = `SELECT codigo FROM productos WHERE codigo='${data.codigo}' `
@@ -131,8 +136,10 @@ En esta sección se definen y explican las consultas a la base de datos
 /* preparamos la sentencia SQL en una constante sql*/
 /* 
     Esta sentecia SQL es para actualizar datos de una fila espesifica de una tabla
-    en este caso vemos que se desea actualizar de la tabla productos y con la palabra reservada SET ingresamos los nuevos datos colocando cada nombre de las columnas 
-    de manera identica a la base de datos y con el = le asignamos el valor enviado por el formulario
+    en este caso vemos que se desea actualizar de la tabla productos y con la palabra 
+    reservada SET ingresamos los nuevos datos colocando cada nombre de las columnas 
+    de manera identica a la base de datos y con el = le asignamos el valor enviado 
+    por el formulario
  */
      const sql = `UPDATE productos SET 
         descripcion='${data.descripcion}',
@@ -147,7 +154,8 @@ En esta sección se definen y explican las consultas a la base de datos
      /* 
         con las constante CONNECTION que posee el metodo QUERY podemos ejecutar la
         la sentencia SQL escrita anteriormente, por lo tanto el método QUERY recibe 
-        varios parametros y en este caso recibe la constante SQL y un callback esto se conoce como una función o metodo y ese callback retorna dos argumentos 
+        varios parametros y en este caso recibe la constante SQL y un callback esto 
+        se conoce como una función o metodo y ese callback retorna dos argumentos 
         1. err -> el error si falla la consulta
         2. result -> el Resultado si todo anda bien
       */
@@ -225,7 +233,12 @@ const sql = `DELETE FROM productos WHERE id = ${id} `
         de varias indexaciones de llaves foraneas y nos permiten obtener los datos de
         otras tablas desde una sola consulta o sentencia SQL en el siguiente caso 
         podemos visualizar como usamos la palabra reservada JOIN para unir tablas
-        la cual llamamos por su nombre (productos) y le asignamos una letran en Mayuscula asi (productos P) la letra P nos permite acceder a los datos de esta tabla como sifuera un objeto y accedemos a sus atributos y por otra parte la tabla que posee todas las indexaciones es SALIDAS y a esa table se le asigno la letra C y dentro del SELECT solicitamos los datos que deseamos de las tablas en cuestion  
+        la cual llamamos por su nombre (productos) y le asignamos una letran en 
+        Mayuscula asi (productos P) la letra P nos permite acceder a los datos de 
+        esta tabla como sifuera un objeto y accedemos a sus atributos y por otra 
+        parte la tabla que posee todas las indexaciones es SALIDAS y a esa table se
+         le asigno la letra C y dentro del SELECT solicitamos los datos que deseamos
+         de las tablas en cuestion  
     */
     const sqlSalidas = `SELECT C.id, C.id_producto, C.id_cliente, cantidad, fecha, concepto, P.descripcion, E.nombre FROM salidas C
     JOIN productos P ON C.id_producto = P.id
