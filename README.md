@@ -110,7 +110,9 @@ En esta sección se definen y explican las consultas a la base de datos
                 })
             }else{
                 /*
-                    Aqui se ejecuta la sentencia INSERT y como vemos ahora el metodo QUERY ademas de recibir la sentencia sql tambien recibe una contante data la cual tiene los datos del producto nuevo.
+                    Aqui se ejecuta la sentencia INSERT y como vemos ahora el metodo 
+                    QUERY ademas de recibir la sentencia sql tambien recibe una 
+                    contante data la cual tiene los datos del producto nuevo.
                 */
                 connection.query(sqlInsertar, data, (err, resultInsertar)=>{
                     if(err){
