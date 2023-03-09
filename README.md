@@ -23,6 +23,7 @@ como metodologia de desarrollo de software.
 4. Despues de clonar el proyecto debemos contar que en la pc ya tenemos NODE.JS sino se debe instalar
 5. Teniendo Instalado Node.js procedemos a ejecutar el siguiente comando
 > npm install
-Este comando instalará todas las dependencias que el proyecto necesita que estan indicadas en el package.json
+    
+    Este comando instalará todas las dependencias que el proyecto necesita que estan indicadas en el package.json
 6. Al terminar de instalar las dependencias se puede ejecutar el siguiente comando que sirve para poner en marcha el servidor
 > npm run server
