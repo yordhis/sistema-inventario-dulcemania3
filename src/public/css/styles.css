@@ -1,0 +1,62 @@
+body {
+    background-color: rgb(12, 11, 11);
+    color:#ddd;
+}
+h1{
+    text-align: center;
+    padding: 15px 10px;
+    margin: 0 auto;
+}
+
+table{
+    margin: 0 auto;
+    background-color: rgb(18, 20, 20);
+}
+
+td{
+    padding: 15px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th{
+    padding: 15px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+form{
+    margin: 0 auto;
+    padding: 10px 15px;
+    width: 250px;
+    background-color: rgb(18, 20, 20); 
+    text-align: center;
+}
+input{
+    margin: 0 auto;
+    padding: 10px 15px;
+}
+label{
+    text-align: left;
+    padding: 1px 5px;
+}
+
+#btn-update{
+    padding: 10px 15px;
+    color: white;
+    background-color: green;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+}
+
+#btn-delete{
+    padding: 10px 15px;
+    background-color: red;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+}

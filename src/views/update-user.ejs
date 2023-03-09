@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Update user</title>
+</head>
+<body>    
+    <h1>UPDATE USERS</h1>
+    <form action="/users/update/<%= users[0]['id'] %>" method="post">
+        <label for="name">NAME</label><br>
+        <input type="text" name="name" value="<%= users[0]['name'] %>"><br>
+        
+        <label for="age">AGE</label><br>
+        <input type="text" name="age"  value="<%= users[0]['age'] %>"><br><br>    
+        
+        <!-- <input type="hidden" name="id" value="<%= users[0]['id'] %>"> -->
+        <input type="submit" value="Update"><br>
+
+        
+        <a href="/users/all">Volver</a>
+    </form>
+</body>
+</html>

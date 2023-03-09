@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+<body>
+
+    <%- include('./partials/header.ejs') %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center mt-3">
+                <h1>Proveedores</h1>
+            </div>
+
+            <div class="col-sm-12">
+                <div class="mt-5 p-3 bg-dark rounded" >
+                    <h2 class="text-warning p-1">Agregar proveedor</h2>
+                    <form action="/proveedores/<%= metodo %>/<%= dataProveedor.id %> " method="post">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                              <label for="codigo" class="col-form-label text-white">Código</label>
+                            </div>
+                            <div class="col-5">
+                              <input type="text" 
+                              id="codigo" 
+                              name="codigo" 
+                              placeholder="Ingrese el codigo del proveedor"
+                              value="<%= dataProveedor.codigo %>"
+                              class="form-control"
+                              required 
+                              >
+                            </div>
+    
+                            <div class="col-auto">
+                                <label for="codigo" class="col-form-label text-white">Nombre</label>
+                            </div>
+                            <div class="col-5">
+                                <input type="text" 
+                                id="nombre" 
+                                name="nombre" 
+                                placeholder="Ingrese el nombre del proveedor"
+                                value="<%= dataProveedor.nombre %>"
+                                class="form-control" 
+                                required
+                                >
+                            </div>
+    
+                            <div class="col-auto">
+                                <label for="contacto" class="col-form-label text-white">Número de Contacto</label>
+                            </div>
+                            <div class="col-3">
+                                <input type="text" 
+                                id="contacto" 
+                                name="contacto" 
+                                placeholder="Ingrese el contacto del proveedor"
+                                value="<%= dataProveedor.contacto %>"
+                                class="form-control" 
+                                >
+                            </div>
+    
+                            <div class="col-auto">
+                                <label for="direccion" class="col-form-label text-white">Dirección</label>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" 
+                                id="direccion" 
+                                name="direccion" 
+                                placeholder="Ingrese la direccion del proveedor"
+                                value="<%= dataProveedor.direccion %>"
+                                class="form-control" 
+                                >
+                            </div>
+                            <div class="col-12">
+                                <input type="submit" 
+                                id="boton" 
+                                value="<%= metodo.toUpperCase() %>" 
+            
+                                class="form-control btn btn-warning" 
+                                >
+                            </div>
+                          </div>
+                    </form>
+
+                </div>
+            </div>
+
+            <% if(message){ %>
+                <div class="col-sm-12">
+                    <div class="alert alert-<%= alert  %>" role="alert">
+                       <%= message %>
+                      </div>
+                </div>
+              <% } %>
+
+            <div class="col-sm-12">
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover mt-3">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Nombre</th>
+                                <th>Contacto</th>
+                                <th>direccion</th>
+                                <th colspan="3" class="text-center text-dark bg-warning ">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% proveedores.forEach( proveedor => {  %>
+                            <tr>
+                                <td><%= proveedor.codigo %></td>
+                                <td><%= proveedor.nombre %></td>
+                                <td><%= proveedor.contacto %></td>
+                                <td><%= proveedor.direccion %></td>
+                              
+                                <td>
+                                  <form action="/proveedores/eliminar/<%= proveedor.id %>" method="post">
+                                      <button class="btn btn-danger">Eliminar</button>
+                                  </form>
+                                </td>
+                                <td>
+                                    <a href="/pages/editar-proveedor/<%= proveedor.id %>" class="text-warning">Editar</a>
+                                </td>
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                       
+                    </table>
+                </div>
+            </div>
+
+           
+            <div class="col-sm-12">
+
+                <%- include('./partials/footer.ejs') %>
+            </div>
+        </div>
+    </div>
+
+
+   
+</body>
+</html>

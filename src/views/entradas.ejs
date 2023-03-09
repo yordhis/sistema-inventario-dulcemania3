@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+<body>
+
+    <%- include('./partials/header.ejs') %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center mt-3">
+                <h1>Entradas</h1>
+            </div>
+
+            <div class="col-sm-12">
+                <div class="mt-5 p-3 bg-dark rounded" >
+                    <h2 class="text-warning p-1">Procesar Entrada</h2>
+                    <form action="/entradas/<%= metodo %>/<%= dataEntrada.id %> " method="post">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                              <label for="codigo" class="col-form-label text-white">Código del producto</label>
+                            </div>
+                            <div class="col-2">
+                              <input type="text" 
+                              id="id_producto" 
+                              name="id_producto" 
+                              placeholder="Ingrese el código del producto"
+                              value="<%= dataEntrada.id_producto %>"
+                              class="form-control"
+                              required 
+                              >
+                            </div>
+    
+                            <div class="col-auto">
+                                <label for="codigo" class="col-form-label text-white">Seleccione proveedor</label>
+                            </div>
+                            <div class="col-5">
+                                <select name="id_proveedor" class="form-control text-dark" >
+                                    <% proveedores.forEach(proveedor => { %>
+                                        <option value="<%= proveedor.id %>">
+                                            <%= proveedor.codigo + ' - ' + proveedor.nombre %> 
+                                        </option>
+                                    <% }) %>
+                                </select>
+
+                            </div>
+    
+                            <div class="col-auto">
+                                <label for="cantidad" class="col-form-label text-white">Cantidad entrante</label>
+                            </div>
+                            <div class="col-3">
+                                <input type="number" 
+                                id="cantidad" 
+                                name="cantidad" 
+                                placeholder="Ingrese la cantidad entrante del producto"
+                                value="<%= dataEntrada.cantidad %>"
+                                class="form-control"
+                                required 
+                                >
+                            </div>
+    
+                            <div class="col-12">
+                                <input type="submit" 
+                                id="boton" 
+                                value="<%= metodo.toUpperCase() %>" 
+            
+                                class="form-control btn btn-warning" 
+                                >
+                            </div>
+                          </div>
+                    </form>
+
+                </div>
+            </div>
+
+            <% if(message){ %>
+                <div class="col-sm-12">
+                    <div class="alert alert-<%= alert  %>" role="alert">
+                       <%= message %>
+                      </div>
+                </div>
+              <% } %>
+
+            <div class="col-sm-12">
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover mt-3">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Proveedor</th>
+                                <th>Cantidad</th>
+                                <th>Fecha</th>
+                                <th colspan="2" class="text-center text-dark bg-warning ">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% entradas.forEach( entrada => {  %>
+                            <tr>
+                                <td><%= entrada.descripcion %></td>
+                                <td><%= entrada.nombre %></td>
+                                <td><%= entrada.cantidad %></td>
+                                <td><%= entrada.fecha %></td>
+                    
+                                <td>
+                                  <form action="/entradas/eliminar/<%= entrada.id %>" method="get">
+                                      <button class="btn btn-danger">Eliminar</button>
+                                  </form>
+                                </td>
+                                
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                       
+                    </table>
+                </div>
+            </div>
+
+           
+            <div class="col-sm-12">
+
+                <%- include('./partials/footer.ejs') %>
+            </div>
+        </div>
+    </div>
+
+
+   
+</body>
+</html>

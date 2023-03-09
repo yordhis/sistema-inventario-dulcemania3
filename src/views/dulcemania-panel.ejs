@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+<body>
+
+    <%- include('./partials/header.ejs') %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center mt-3">
+                <h1>Stock Dulcemania 3</h1>
+            </div>
+
+            <% if(message){ %>
+              <div class="col-sm-12">
+                  <div class="alert alert-<%= alert  %>" role="alert">
+                     <%= message %>
+                    </div>
+              </div>
+            <% } %>
+
+            <div class="col-sm-12">
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover mt-3">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Descripción</th>
+                                <th>Categoria</th>
+                                <th>Marca</th>
+                                <th>Costo</th>
+                                <th>Precio</th>
+                                <th>Cantidad Actual</th>
+                                <th colspan="3" class="text-center text-dark bg-warning ">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% productos.forEach( producto => {  %>
+                            <tr>
+                                <td><%= producto.codigo %></td>
+                                <td><%= producto.descripcion %></td>
+                                <td><%= producto.categoria %></td>
+                                <td><%= producto.marca %></td>
+                                <td class="text-danger"><%= producto.costo %> $</td>
+                                <td class="text-success"><%= producto.precio %> $</td>
+                                <td class="text-warning"><%= producto.cantidad_actual %></td>
+                                <td>
+                                  <form action="/productos/eliminar/<%= producto.id %>" method="post">
+                                      <button class="btn btn-danger">Eliminar</button>
+                                  </form>
+                                </td>
+                                <td>
+                                    <a href="/pages/editar-producto/<%= producto.id %>" class="text-warning">Editar</a>
+                                </td>
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                       
+                    </table>
+                </div>
+            </div>
+
+           
+
+        </div>
+    </div>
+
+
+ <%- include('./partials/footer.ejs') %>
+   
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+<body>
+
+    <%- include('./partials/header.ejs') %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center mt-3">
+                <h1>Clientes</h1>
+            </div>
+
+            <div class="col-sm-12">
+                <div class="mt-5 p-3 bg-dark rounded" >
+                    <h2 class="text-warning p-1">Registrar cliente</h2>
+                    <form action="/clientes/<%= metodo %>/<%= dataCliente.id %> " method="post">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                              <label for="codigo" class="col-form-label text-white">Código</label>
+                            </div>
+                            <div class="col-5">
+                              <input type="text" 
+                              id="codigo" 
+                              name="codigo" 
+                              placeholder="Ingrese el código del cliente"
+                              value="<%= dataCliente.codigo %>"
+                              class="form-control"
+                              required 
+                              >
+                            </div>
+    
+                            <div class="col-auto">
+                                <label for="codigo" class="col-form-label text-white">Nombre</label>
+                            </div>
+                            <div class="col-5">
+                                <input type="text" 
+                                id="nombre" 
+                                name="nombre" 
+                                placeholder="Ingrese el nombre del cliente"
+                                value="<%= dataCliente.nombre %>"
+                                class="form-control" 
+                                required
+                                >
+                            </div>
+    
+                            <div class="col-auto">
+                                <label for="telefono" class="col-form-label text-white">Número de Contacto</label>
+                            </div>
+                            <div class="col-3">
+                                <input type="text" 
+                                id="telefono" 
+                                name="telefono" 
+                                placeholder="Ingrese el telefono del cliente"
+                                value="<%= dataCliente.telefono %>"
+                                class="form-control" 
+                                >
+                            </div>
+    
+                            <div class="col-auto">
+                                <label for="direccion" class="col-form-label text-white">Dirección</label>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" 
+                                id="direccion" 
+                                name="direccion" 
+                                placeholder="Ingrese la direccion del cliente"
+                                value="<%= dataCliente.direccion %>"
+                                class="form-control" 
+                                >
+                            </div>
+                            <div class="col-12">
+                                <input type="submit" 
+                                id="boton" 
+                                value="<%= metodo.toUpperCase() %>" 
+            
+                                class="form-control btn btn-warning" 
+                                >
+                            </div>
+                          </div>
+                    </form>
+
+                </div>
+            </div>
+
+            <% if(message){ %>
+                <div class="col-sm-12">
+                    <div class="alert alert-<%= alert  %>" role="alert">
+                       <%= message %>
+                      </div>
+                </div>
+              <% } %>
+
+            <div class="col-sm-12">
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover mt-3">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Nombre</th>
+                                <th>Teléfono</th>
+                                <th>dirección</th>
+                                <th colspan="3" class="text-center text-dark bg-warning ">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% clientes.forEach( cliente => {  %>
+                            <tr>
+                                <td><%= cliente.codigo %></td>
+                                <td><%= cliente.nombre %></td>
+                                <td><%= cliente.telefono %></td>
+                                <td><%= cliente.direccion %></td>
+                              
+                                <td>
+                                  <form action="/clientes/eliminar/<%= cliente.id %>" method="post">
+                                      <button class="btn btn-danger">Eliminar</button>
+                                  </form>
+                                </td>
+                                <td>
+                                    <a href="/pages/editar-cliente/<%= cliente.id %>" class="text-warning">Editar</a>
+                                </td>
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                       
+                    </table>
+                </div>
+            </div>
+
+           
+            <div class="col-sm-12">
+
+                <%- include('./partials/footer.ejs') %>
+            </div>
+        </div>
+    </div>
+
+
+   
+</body>
+</html>

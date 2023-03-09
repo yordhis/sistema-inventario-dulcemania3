@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head.ejs') %>
+</head>
+<body>
+
+   <%- include('./partials/header.ejs') %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center mt-3">
+                <h1>Crear producto </h1>
+            </div>
+            <% if(message){ %>
+            <div class="col-sm-12">
+                <div class="alert alert-<%= alert  %>" role="alert">
+                   <%= message %>
+                  </div>
+            </div>
+            <% } %>
+
+            <div class="col-sm-12">
+                <div class="rounded bg-dark text-white p-3">
+                    <form action="/productos/<%= metodo %>/<%= dataProducto.id %>" method="post">
+    
+                        <div class="mb-3">
+                          <label for="codigo" class="form-label">Código</label>
+                          <input type="text" class="form-control" id="codigo" name="codigo" placeholder="Ingrese el codigo del producto" value="<%= dataProducto.codigo %>" required>
+                        </div>
+    
+                        <div class="mb-3">
+                          <label for="descripcion" class="form-label">Descripción</label>
+                          <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese la descripción del producto" value="<%= dataProducto.descripcion %>" required>
+                        </div>
+    
+                        <div class="mb-3">
+                          <label for="categoria" class="form-label">Categoria</label>
+                          <input type="text" class="form-control" id="categoria" name="categoria" 
+                          value="<%= dataProducto.categoria %>"
+                          placeholder="Ingrese la categoria del producto" required>
+                        </div>
+    
+                        <div class="mb-3">
+                          <label for="marca" class="form-label">Marca</label>
+                          <input type="text" class="form-control" id="marca" name="marca" 
+                          value="<%= dataProducto.marca %>"
+                          placeholder="Ingrese la Marca del producto" required>
+                        </div>
+    
+                        <div class="mb-3">
+                          <label for="costo" class="form-label">Costo</label>
+                          <input type="text" 
+                          class="form-control" 
+                          id="costo" 
+                          name="costo" 
+                          value="<%= dataProducto.costo %>"
+                          placeholder="Ingrese la Costo del producto" required>
+                        </div>
+    
+                        <div class="mb-3">
+                          <label for="precio" class="form-label">precio</label>
+                          <input type="text" class="form-control" id="precio" name="precio" 
+                          value="<%= dataProducto.precio %>"
+                          placeholder="Ingrese la Precio del producto" required>
+                        </div>
+    
+                        <div class="mb-3">
+                          <label for="cantidad_actual" class="form-label">Cantidad Inicial</label>
+                          <input type="number" class="form-control" id="cantidad_actual" name="cantidad_actual" value="<%= dataProducto.cantidad_actual%>" placeholder="Ingrese la Cantidad Inicial del producto" required>
+                        </div>
+                    
+                        <button type="submit" class="btn btn-primary">
+                          <%= metodo %> producto</button>
+                    </form>
+                </div>
+            </div>
+
+           <%- include('./partials/footer.ejs') %>
+
+        </div>
+    </div>
+</body>
+</html>

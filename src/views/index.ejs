@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+<body>
+   
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="mt-2 text-center">
+                    <img src="/img/logo-dulcemania.png" alt="logo" width="350" height="200">
+                    <h1>Bienvenido a Stock Dulcemania 3</h1>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <div class="mt-3 p-2 rounded bg-dark">
+                            <form action="/usuarios/entrar" method="post">
+                                <h2 class="text-warning text-center">Iniciar sesión</h2>
+                        
+                                <label for="nombre_usuario" class="text-white fs-5">Nombre de usuario</label>
+                                <input type="text" name="nombre_usuario" placeholder="Ingrese su nombre de usuario"
+                                class="form-control"
+                                >
+                        
+                                <label for="clave" class="text-white fs-5">Contraseña</label>
+                                <input type="password" name="clave" placeholder="Ingrese su contraseña"
+                                class="form-control"
+                                > <br>
+                        
+                                <span class="text-danger">
+                                    <%= message  %>
+                                </span><br>
+                        
+                                <input type="submit" value="Entrar" class="btn btn-warning form-control">
+                        
+                        
+                                <p class="text-center mt-3">
+                                    <a href="/usuarios/registrar">Registrate aquí.</a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+   
+</body>
+</html>
