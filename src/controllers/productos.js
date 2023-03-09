@@ -39,7 +39,6 @@ const crear = (req, res) => {
     })
 }
 
-
 const editar = (req, res) => {
     /* Recibimos el identificador del usuario para consular y actualizar */
     const { id } = req.params
