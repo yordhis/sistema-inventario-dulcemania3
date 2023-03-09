@@ -90,7 +90,7 @@ En esta sección se definen y explican las consultas a la base de datos
       para espesificar que se van a insertar los siguientes datos; pero en este caso
        despues del SET tenemos un signo de interrogación ? esto no dice que se debe 
        preparar una variable o constante con los datos a insertar. 
-       
+
 */
     const sqlInsertar = "INSERT INTO productos SET ?"
     const sqlConsulta = `SELECT codigo FROM productos WHERE codigo='${data.codigo}' `
@@ -240,7 +240,8 @@ const sql = `DELETE FROM productos WHERE id = ${id} `
          le asigno la letra C y dentro del SELECT solicitamos los datos que deseamos
          de las tablas en cuestion  
     */
-    const sqlSalidas = `SELECT C.id, C.id_producto, C.id_cliente, cantidad, fecha, concepto, P.descripcion, E.nombre FROM salidas C
+    const sqlSalidas = `SELECT C.id, C.id_producto, C.id_cliente, 
+    cantidad, fecha, concepto, P.descripcion, E.nombre FROM salidas C
     JOIN productos P ON C.id_producto = P.id
     JOIN clientes E ON C.id_cliente = E.id
      `
